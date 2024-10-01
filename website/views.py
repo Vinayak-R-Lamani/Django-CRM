@@ -1,7 +1,7 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import authenticate , login , logout
 from django.contrib import messages
-
+from .forms import SignUpForms
 # Create your views here.
 
 def home(request):
@@ -19,8 +19,7 @@ def home(request):
             messages.success(request,"There was error logged in , Please Try again ....!")
             return redirect('home')
         
-        print(username)
-        print(password)
+       
     return render(request,'home.html',{})
 
 
@@ -30,4 +29,19 @@ def logout_user(request):
     return redirect('home')
 
 def register_user(request):
-    return render(request,'register.html',{})
+    if request.method == "POST":
+        form = SignUpForms(request.POST)
+        if form.is_valid():
+            user = form.save()
+            
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username = username , password = password)
+            login(request , user)
+            messages.success(request , 'You have Successfully Register')
+            return redirect('home')
+        
+    else:
+        form = SignUpForms()
+        
+    return render(request, 'register.html', {'form':form})
