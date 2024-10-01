@@ -7,3 +7,7 @@ $ git config --global user.email "you@youraddress.com"
 $ git config --global push.default matching
 $ git config --global alias.co checkout
 $ git init
+
+git remote add origin https://github.com/Vinayak-R-Lamani/Django-CRM.git
+git branch -M main
+git push -u origin main
