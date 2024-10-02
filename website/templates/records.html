@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>app</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<h1>Customer Records</h1>
+
+<div style="display: flex; align-items: center;">
+<div style="display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <h6>Name:</h6>
+        <p style="margin-left: 10px;">{{customer_record.first_name}} {{customer_record.last_name}}</p>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <h6>Email:</h6>
+        <p style="margin-left: 10px;">{{customer_record.email}}</p>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <h6>Phone:</h6>
+        <p style="margin-left: 10px;">{{customer_record.phone}}</p>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <h6>Address:</h6>
+        <p style="margin-left: 10px;">{{customer_record.address}}</p>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <h6>City:</h6>
+        <p style="margin-left: 10px;">{{customer_record.city}}</p>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <strong><h6>State:</h6></strong>
+        <p style="margin-left: 10px;">{{customer_record.state}}</p>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <h6>Pincode:</h6>
+        <p style="margin-left: 10px;">{{customer_record.pincode}}</p>
+    </div>
+
+    <a href="{% url 'home' %}" class="btn btn-primary">Back To home page</a>
+    <br>
+    <a href="{% url 'delete_records' customer_record.id %}" class="btn btn-danger">Delete</a>
+    <br>
+    <a href="{% url 'update_record' customer_record.id %}" class="btn btn-info">Update</a>
+</div>
+
+
+</div>
+
+{% endblock content %}
