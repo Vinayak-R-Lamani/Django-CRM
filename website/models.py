@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Record(models.Model):
-    create_at = models.DateTimeField(auto_created=True)
+    create_at = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length = 50)
     last_name =models.CharField(max_length = 50)
     email = models.CharField(max_length = 50)
